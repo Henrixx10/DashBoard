@@ -1,0 +1,159 @@
+
+.title-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.content-title{
+    border: 0.5px solid grey;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 990px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f5f5f5;
+    color: black;
+}
+
+.img-box{
+    width: 66px;
+    height: 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.back{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+.backs{
+    background-color: #646cff;
+    border: none;
+    /* border: 1px solid rgb(186, 185, 185); */
+    padding: 18px;
+    font-size: 1em;
+    color: white;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.backs:hover{
+    background-color: white;
+    color: #646cff;
+}
+
+.modify{
+    background-color: #646cff;
+    border: none;
+    /* border: 1px solid rgb(186, 185, 185); */
+    padding: 18px;
+    font-size: 1em;
+    color: white;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.modify:hover{
+    background-color: white;
+    color: #646cff;
+    transition: 0.4s;
+}
+
+.definition{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.listDef{
+    border-radius: 15px;
+    width: 100%;
+    max-width: 990px;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    border: 0.5px solid grey;
+    color: black;
+}
+
+.btnAddCard{
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px;
+}
+
+.space{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+}
+
+.AddCard{
+    padding: 10px;
+    border-radius: 8px;
+    color: black;
+    border: 0.8px solid black;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+.AddFlash{
+    padding: 10px;
+    border-radius: 8px;
+    color: black;
+    border: 0.8px solid black;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+.listDefs{
+    margin: 30px;
+}
+
+.flash{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.flashCard{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.Cards{
+    margin: 15px;
+}
+
+.title{
+  font-family: "Mozilla Text", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.reduce{
+    padding: 10px;
+    background-color: #646cff;
+    border: none;
+    color: white;
+    border-radius: 8px;
+}

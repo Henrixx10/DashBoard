@@ -1,0 +1,11 @@
+
+.footer-div{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.footImg{
+    width: 50px;
+    height: 15px;
+}

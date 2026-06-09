@@ -1,0 +1,56 @@
+
+.title-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-sec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 990px;
+    background-color: #f5f5f5;
+    color: black;
+    border: 0.5px solid grey;
+    border-radius: 15px;
+}
+
+.img-logo{
+    width: 200px;
+    margin: 2px;
+}
+
+.title-h2{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.connectRedirect{
+    padding: 15px;
+    font-size: 1em;
+    margin: 10px;
+    background-color: #ff6464;
+    border: 0.4px solid #ff6464;
+    color: white;
+    border-radius: 8px;
+}
+
+.connectRedirect:hover{
+    background-color: white;
+    border: 0.4px solid #ff6464;
+    color: #ff6464;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.redirect{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}

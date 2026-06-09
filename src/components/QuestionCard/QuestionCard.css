@@ -1,0 +1,81 @@
+
+.QuestionCard-box{
+    width: 100%;
+    max-width: 400px;
+    height: 450px;
+    background-color: #646cff;
+    color: white;
+    margin: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.QuestionCard-box-green{
+    width: 100%;
+    max-width: 400px;
+    height: 450px;
+    background-color: #22C55E;
+    color: white;
+    margin: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.QuestionCard-box-red{
+    width: 100%;
+    max-width: 400px;
+    height: 450px;
+    background-color: #ff6464;
+    color: white;
+    margin: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+
+.titleH2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    align-items: baseline;
+    padding-top: 20px;
+}
+
+
+.repP{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btnMod{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 50px;
+}
+
+.verify{
+    height: 50px;
+    width: 50px;
+    font-size: 1em;
+    border-radius: 100%;
+    border: none;
+    background-color: white;
+}
+
+.NoTconnus{
+    height: 50px;
+    width: 50px;
+    font-size: 1em;
+    border-radius: 100%;
+    border: none;
+    background-color: white;
+}

@@ -1,0 +1,42 @@
+.CardMod{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #646cff;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.quest{
+
+    border-radius: 15px;
+    height: 20px;
+    border: 1px solid #646cff;
+    margin: 5px;
+}
+
+.reponse{
+
+    border-radius: 15px;
+    height: 20px;
+    border: 1px solid #646cff;
+    margin: 5px;
+}
+
+.deleteC{
+    padding: 10px;
+    font-size: 0.8em;
+    background-color: #ff6464;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.deleteC:hover{
+    background-color: white;
+    color: #ff6464;
+    transition: 0.4s;
+}

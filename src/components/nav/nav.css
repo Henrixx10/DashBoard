@@ -1,0 +1,18 @@
+
+.nav{
+    display:  flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav a{
+    text-decoration: none;
+    margin: 15px;
+    font-size: 1.2em;
+    padding: 8px;
+}
+
+.btn.active{
+    border-bottom: 2px solid #646cff;
+    transition: 0.01s;
+}

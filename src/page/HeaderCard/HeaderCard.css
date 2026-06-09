@@ -1,0 +1,22 @@
+
+.head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Link-head{
+    margin: 15px;
+    text-decoration: none;
+    padding: 3px;
+}
+
+.Link-head.active{
+    border-bottom: 2px solid #646cff;
+    transition: 0.01s;
+}
+
+.link-a{
+    color: black;
+    text-decoration: none;
+}

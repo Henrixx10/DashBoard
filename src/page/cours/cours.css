@@ -1,0 +1,32 @@
+
+.Cours{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Cours-ul{
+    margin: 15px;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hub{
+    padding: 15px;
+    font-size: 1em;
+    background-color: #ff6464;
+    border: 0.4px solid #ff6464;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.hub:hover{
+    background-color: white;
+    color: #ff6464;
+    transition: 0.5s;
+    border: 0.4px solid #ff6464;
+}

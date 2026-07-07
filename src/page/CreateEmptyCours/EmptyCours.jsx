@@ -49,7 +49,7 @@ const EmptyCours = () => {
 
                         :
 
-                        fetch("http://localhost:3000", {
+                        fetch("https://the-dashboard-o5h8.onrender.com/", {
 
                             method: "POST",
                             headers: { "Content-Type": "application/json" },

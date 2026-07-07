@@ -138,7 +138,10 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
                 content.Paragraph.map((descriptObj, indexs)=>(
                   <>
 
-                        <div className='para' key={`${indexs}-para`} onContextMenu={(e)=>{
+                        <div className='para' key={`${indexs}-para`} onDoubleClick={(e)=>{
+                                    e.preventDefault()
+                                    setMenu2({visible:true, x: e.clientX, y: e.clientY, indexPara: indexs})
+                                }} onContextMenu={(e)=>{
 
                             e.preventDefault()
 
@@ -202,7 +205,10 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
                                     margin: '20px',
                                     width: `${obj.PageContent[index].Paragraph[indexs].dimension}%`
                                     
-                                }}src={descriptObj.img} onContextMenu={(e)=>{
+                                }}src={descriptObj.img} onDoubleClick={(e)=>{
+                                    e.preventDefault()
+                                    setMenu2({visible:true, x: e.clientX, y: e.clientY, indexPara: indexs})
+                                }} onContextMenu={(e)=>{
                                     e.preventDefault()
                                     setMenu2({visible:true, x: e.clientX, y: e.clientY, indexPara: indexs})
                                 }} />

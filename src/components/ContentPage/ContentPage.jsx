@@ -140,7 +140,7 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
 
                         <div className='para' key={`${indexs}-para`} onDoubleClick={(e)=>{
                                     e.preventDefault()
-                                    setMenu2({visible:true, x: e.clientX, y: e.clientY, indexPara: indexs})
+                                    setMenu({visible:true, x: e.clientX, y: e.clientY, indexPara: indexs})
                                 }} onContextMenu={(e)=>{
 
                             e.preventDefault()

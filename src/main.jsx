@@ -11,6 +11,10 @@ import CreateAccount from './page/CreateAccount/CreateAccount.jsx'
 import Connection from './page/Connection/Connection.jsx'
 import HomeConnect from './page/HomeConnect/HomeConnect.jsx'
 import Question from './page/Question/Question.jsx'
+import DetailsNote from './page/DetailsNote/DetailsNote.jsx'
+import FileUploader from './page/FileUploader/FileUploader.jsx'
+import ModFile from './page/ModFile/ModFile.jsx'
+import Redimension from './page/RedimensionerPage/Redimension.jsx'
 import Footer from './page/footer/footer.jsx'
 import './index.css'
 
@@ -21,12 +25,11 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<Cours />} />
         <Route path="/cours/:name" element={<DetailCours />} />
-        <Route path="/question/:name" element={<Question />} />
-        <Route path="/cours/*" element={<Cours />} />
+        <Route path="/cours/question/:name" element={<Question />} />
         <Route path="/info/" element={<Info />} />
         <Route path="/info/*" element={<Info />} />
-        <Route path="/modifyCours/:name" element={<ModifyCours />} />
-        <Route path="/modifyCours/*" element={<Cours />} />
+        <Route path="/cours/modifyCours/:name" element={<ModifyCours />} />
+        <Route path="/cours/modifyCours/*" element={<Cours />} />
         <Route path="/emptyCours" element={<EmptyCours />} />
         <Route path="/emptyCours*" element={<EmptyCours />} />
         <Route path='/createAccount/' element={<CreateAccount />} />
@@ -35,6 +38,10 @@ createRoot(document.getElementById('root')).render(
         <Route path='/connection/*' element={<Connection />} />
         <Route path='/start/' element={<HomeConnect />} />
         <Route path='/start/*' element={<HomeConnect />} />
+        <Route path='/cours/Notes/:name' element={<DetailsNote />} />
+        <Route path='/cours/FileUpload/:indexObj/:indexPara/:indexTxt/:nameObj' element={<FileUploader />} />
+        <Route path='/cours/FileUploadMod/:indexObj/:indexPara/:indexTxt/:coursName/:ImgId' element={<ModFile />} />
+        <Route path='/cours/Redimension/:name/:indexPage/:indexPara' element={<Redimension />} />
         <Route path="*" element={<Cours/>} />
       </Routes>
       <Footer />

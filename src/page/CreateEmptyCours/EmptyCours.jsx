@@ -49,7 +49,7 @@ const EmptyCours = () => {
 
                         :
 
-                        fetch("https://the-dashboard-o5h8.onrender.com/", {
+                        fetch("http://localhost:3000", {
 
                             method: "POST",
                             headers: { "Content-Type": "application/json" },
@@ -58,7 +58,8 @@ const EmptyCours = () => {
                                 coursName: `${Name}-${author}`,
                                 coursImg: Img,
                                 coursDef: [],
-                                coursFlash: []
+                                coursFlash: [],
+                                PageContent: []
                             })
                         })
                         .then(()=>{window.location.reload()})

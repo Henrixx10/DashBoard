@@ -1,11 +1,14 @@
 
 import './header.css'
 import Nav from '../../components/nav/nav'
+import { Link } from 'react-router-dom'
 
 function Header() {
   return(
     <section className="header">
-      <h1 className="header-title">The DashBoard</h1>
+      <Link className='header-title-link' to="/cours/">
+        <h1 className="header-title">The DashBoard</h1>
+      </Link>
       <Nav />
     </section>
   )

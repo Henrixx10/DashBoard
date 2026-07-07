@@ -1,0 +1,47 @@
+
+.parag{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Supres{
+    padding: 10px;
+    border-radius: 8px;
+    color: black;
+    border: 0.8px solid black;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+.del{
+    margin: 2px;
+    background-color: white;
+    font-size: 0.75em;
+    border-radius: 10px;
+    border: none;
+    padding: 6px;
+    /* font-family: "WDXL Lubrifont TC", sans-serif;
+    font-style: normal; */
+}
+
+.del:hover{
+    background-color: rgb(100, 108, 255);
+    transition: 0.2s;
+    color: white;
+}
+
+.ajouter{
+    margin: 2px;
+    background-color: white;
+    font-size: 0.75em;
+    border-radius: 10px;
+    border: none;
+    padding: 6px;
+}
+
+.ajouter:hover{
+    background-color: rgb(100, 108, 255);
+    transition: 0.2s;
+    color: white;
+}

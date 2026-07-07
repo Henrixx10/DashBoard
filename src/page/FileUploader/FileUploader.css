@@ -1,0 +1,57 @@
+
+
+.Title-div-fichier{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.title-section-fichier{
+    border: 0.5px solid grey;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 990px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f5f5f5;
+    color: black;
+    flex-direction: column;
+}
+
+.sendFileInput{
+    margin: 14px;
+
+    border: none;
+    /* border: 1px solid rgb(186, 185, 185); */
+    padding: 15px;
+    font-size: 0.8em;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    display: inline-block;
+    cursor: pointer;
+    margin: 8px;
+}
+
+.SendFIle{
+    background-color: #ff6464;
+    border: none;
+    /* border: 1px solid rgb(186, 185, 185); */
+    padding: 15px;
+    font-size: 0.8em;
+    color: white;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    display: inline-block;
+    cursor: pointer;
+    margin: 8px;
+}
+
+.SendFIle:hover{
+    background-color: white;
+    color: #ff6464;
+    transition: 0.4s;
+}

@@ -10,12 +10,16 @@ const HeaderCard = ({urlname}) => {
                 <a className="link-a">Synthèse</a>
             </NavLink>
 
-
-            <NavLink to={`/Question/${urlname}`} className='Link-head'>
-                <a className="link-a">Fiches de révisions</a>
+            <NavLink to={`/cours/Notes/${urlname}`} className='Link-head'>
+                <a className="link-a">Notes</a>
             </NavLink>
 
-            <NavLink to={`/modifyCours/${urlname}`} className='Link-head'>
+
+            <NavLink to={`/cours/Question/${urlname}`} className='Link-head'>
+                <a className="link-a">Fiches</a>
+            </NavLink>
+
+            <NavLink to={`/cours/modifyCours/${urlname}`} className='Link-head'>
                 <a className="link-a">Modifier</a>
             </NavLink>
 

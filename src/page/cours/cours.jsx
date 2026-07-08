@@ -1,7 +1,6 @@
 
-import { data, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { cours } from '../../data/coursData'
 import ListCours from '../../components/ListCours/ListCours'
 import CardCreate from '../../components/CardCreate/CardCreate'
 import './cours.css'
@@ -10,24 +9,32 @@ function Cours(){
 
     const token = window.localStorage.getItem("token")
     const navigate = useNavigate()
+    const [cours, setCours] = useState([])
     const [author, setAuthor] = useState("")
     const [loading, setLoading] = useState(true)
 
+    useEffect(()=>{
+        fetch("https://the-dashboard-o5h8.onrender.com/")
+            .then(res=>{
+                if (!res.ok) {
+                    setLoading(false)
+                }
+                return res.json();
+            })
+            .then(data=>{
+                setCours(data.synths)
+            })
+            .catch((err)=>console.log(err))
+            .finally(()=>setLoading(false))
+    }, [])
+
     useEffect(() => {
         fetch(`https://the-dashboard-o5h8.onrender.com/user/${localStorage.getItem('userId')}`)
-            .then(res => {
-                if(res){
-                    return res.json()
-                }
-                else{
-                    setLoading(true)
-                }
-            })
+            .then(res =>res.json())
             .then(data => {
-                console.log(data.oneUser.email)
                 setAuthor(data.oneUser.email)
             })
-            .catch(() => setLoading(true))
+            .catch((err) => console.log(err))
             .finally(()=>setLoading(false))
     }, [])
 
@@ -39,7 +46,7 @@ function Cours(){
 
         token ?
 
-            cours.length > 0 ?
+            !loading?
 
             <div className="Cours">
                 <div className="title-cours">

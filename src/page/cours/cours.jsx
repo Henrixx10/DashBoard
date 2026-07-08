@@ -1,5 +1,5 @@
 
-import { useNavigate } from 'react-router-dom'
+import { data, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { cours } from '../../data/coursData'
 import ListCours from '../../components/ListCours/ListCours'
@@ -22,8 +22,6 @@ function Cours(){
             .catch(err => console.error(err))
     }, [])
 
-    console.log(author)
-
     const myCours = cours.filter(
         obj => obj.coursAuthor === author
     )
@@ -32,28 +30,37 @@ function Cours(){
 
         token ?
 
-        <div className="Cours">
-            <div className="title-cours">
-                <section className='title-cours-section'>
-                    <h2 className="Cours-title">Vos cours :</h2>  
-                </section>             
+            myCours ?
+
+            <div className="Cours">
+                <div className="title-cours">
+                    <section className='title-cours-section'>
+                        <h2 className="Cours-title">Vos cours :</h2>  
+                    </section>             
+                </div>
+
+                <ul className="Cours-ul">
+                    {
+
+                        myCours.map((obj, index)=>(
+
+                            <ListCours key={index} obj={obj} />
+
+                        ))
+                    }
+
+                    <CardCreate />
+
+                </ul>
             </div>
 
-            <ul className="Cours-ul">
-                {
-
-                    myCours.map((obj, index)=>(
-
-                        <ListCours key={index} obj={obj} />
-
-                    ))
-                }
-
-                <CardCreate />                
-
-            </ul>
-        </div>
-
+            : 
+            
+            <div className="reloadSite">
+                <button className="reloadBtn" onClick={()=>window.location.reload()}>
+                    Actualiser
+                </button>
+            </div>
         : 
 
             <div className="Lolo">

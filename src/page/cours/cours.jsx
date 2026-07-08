@@ -11,6 +11,7 @@ function Cours(){
     const token = window.localStorage.getItem("token")
     const navigate = useNavigate()
     const [author, setAuthor] = useState("")
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         fetch(`https://the-dashboard-o5h8.onrender.com/user/${localStorage.getItem('userId')}`)
@@ -20,6 +21,7 @@ function Cours(){
                 setAuthor(data.oneUser.email)
             })
             .catch(err => console.error(err))
+            .finally(()=>setLoading(true))
     }, [])
 
     const myCours = cours.filter(
@@ -30,7 +32,7 @@ function Cours(){
 
         token ?
 
-            myCours ?
+            loading ?
 
             <div className="Cours">
                 <div className="title-cours">

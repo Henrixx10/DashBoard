@@ -10,7 +10,7 @@ const ListCours = ({obj}) => {
         <Link to={`/cours/${obj.coursName}`} className='link'>
             <div className="card-box">
                 <h3 className="Name">{nameCours}</h3>
-                <img src={obj.coursImg} className='img-cours'/>
+                <img src={obj.coursImg} alt='logo' className='img-cours'/>
             </div>
         </Link>
     )

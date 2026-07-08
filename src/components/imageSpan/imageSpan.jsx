@@ -11,7 +11,7 @@ const ImageSpan = ({obj, descriptObj, dimension, setDimension, index, indexs}) =
                 descriptObj ?
 
                 <div className='imagediv'>
-                    <img style={{margin: '20px', width: `${dimension}%`}} src={descriptObj}/>
+                    <img style={{margin: '20px', width: `${dimension}%`}} alt='image sélectionnée' src={descriptObj}/>
                 </div> : console.log("")
             }
         

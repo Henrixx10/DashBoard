@@ -205,7 +205,7 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
                                     margin: '20px',
                                     width: `${obj.PageContent[index].Paragraph[indexs].dimension}%`
                                     
-                                }}src={descriptObj.img} onDoubleClick={(e)=>{
+                                }} alt='image du paragraphe' src={descriptObj.img} onDoubleClick={(e)=>{
                                     e.preventDefault()
                                     setMenu2({visible:true, x: e.clientX, y: e.clientY, indexPara: indexs})
                                 }} onContextMenu={(e)=>{

@@ -20,8 +20,8 @@ function Cours(){
                 console.log(data.oneUser.email)
                 setAuthor(data.oneUser.email)
             })
-            .catch(err => console.error(err))
-            .finally(()=>setLoading(true))
+            .catch(() => setLoading(true))
+            .finally(()=>setLoading(false))
     }, [])
 
     const myCours = cours.filter(
@@ -32,7 +32,7 @@ function Cours(){
 
         token ?
 
-            loading ?
+            !loading ?
 
             <div className="Cours">
                 <div className="title-cours">

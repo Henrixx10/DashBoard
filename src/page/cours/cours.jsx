@@ -14,28 +14,32 @@ function Cours(){
     const [loading, setLoading] = useState(true)
 
     useEffect(()=>{
+        
         fetch("https://the-dashboard-o5h8.onrender.com/")
             .then(res=>{
                 if (!res.ok) {
                     setLoading(false)
                 }
-                return res.json();
+                else{
+                    setLoading(false)
+                    return res.json()
+                }
             })
             .then(data=>{
                 setCours(data.synths)
             })
-            .catch((err)=>console.log(err))
-            .finally(()=>setLoading(false))
+            .catch((err)=>setLoading(true))
     }, [])
 
     useEffect(() => {
+        
         fetch(`https://the-dashboard-o5h8.onrender.com/user/${localStorage.getItem('userId')}`)
             .then(res =>res.json())
             .then(data => {
+                setLoading(false)
                 setAuthor(data.oneUser.email)
             })
-            .catch((err) => console.log(err))
-            .finally(()=>setLoading(false))
+            .catch((err) => setLoading(true))
     }, [])
 
     const myCours = cours.filter(
@@ -73,6 +77,7 @@ function Cours(){
             : 
             
             <div className="reloadSite">
+                <h2 className="titleReload">Le serveur est en cours de chargement ...</h2>
                 <button className="reloadBtn" onClick={()=>window.location.reload()}>
                     Actualiser
                 </button>

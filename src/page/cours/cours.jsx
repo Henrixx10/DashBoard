@@ -17,7 +17,7 @@ function Cours(){
         fetch(`https://the-dashboard-o5h8.onrender.com/user/${localStorage.getItem('userId')}`)
             .then(res => {
                 if(res){
-                    res.json()
+                    return res.json()
                 }
                 else{
                     setLoading(true)

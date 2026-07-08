@@ -13,6 +13,13 @@ function Cours(){
     const [author, setAuthor] = useState("")
     const [loading, setLoading] = useState(true)
 
+    if (cours){
+        setLoading(false)
+    }
+    else{
+        setLoading(true)
+    }
+
     useEffect(() => {
         fetch(`https://the-dashboard-o5h8.onrender.com/user/${localStorage.getItem('userId')}`)
             .then(res => {

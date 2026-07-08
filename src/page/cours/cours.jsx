@@ -15,7 +15,14 @@ function Cours(){
 
     useEffect(() => {
         fetch(`https://the-dashboard-o5h8.onrender.com/user/${localStorage.getItem('userId')}`)
-            .then(res => res.json())
+            .then(res => {
+                if(res){
+                    res.json()
+                }
+                else{
+                    setLoading(true)
+                }
+            })
             .then(data => {
                 console.log(data.oneUser.email)
                 setAuthor(data.oneUser.email)

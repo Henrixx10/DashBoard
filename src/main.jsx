@@ -31,7 +31,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/cours/modifyCours/:name" element={<ModifyCours />} />
         <Route path="/cours/modifyCours/*" element={<Cours />} />
         <Route path="/emptyCours" element={<EmptyCours />} />
-        <Route path="/emptyCours*" element={<EmptyCours />} />
+        <Route path="/emptyCours/*" element={<EmptyCours />} />
         <Route path='/createAccount/' element={<CreateAccount />} />
         <Route path='/createAccount/*' element={<CreateAccount />} />
         <Route path='/connection/' element={<Connection />} />

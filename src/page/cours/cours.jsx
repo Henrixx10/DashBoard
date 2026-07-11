@@ -22,8 +22,13 @@ function Cours(){
         ]);
     }
 
+
     useEffect(() => {
+        
+        console.log("Début des fetch");
+
         Promise.all([
+            // https://the-dashboard-o5h8.onrender.com/
             fetchTimeout("https://the-dashboard-o5h8.onrender.com/").then(res => {
                 if (!res.ok) throw new Error("Erreur serveur")
                 return res.json()
@@ -41,6 +46,7 @@ function Cours(){
             console.log(err)
         })
         .finally(() => {
+            console.log("Finnaly");
             setLoading(false);
         });
     }, []);
@@ -68,7 +74,7 @@ function Cours(){
                 <div className="title-cours">
                     <section className='title-cours-section'>
                         <h2 className="Cours-title">Vos cours :</h2>  
-                    </section>             
+                    </section>
                 </div>
 
                 <ul className="Cours-ul">

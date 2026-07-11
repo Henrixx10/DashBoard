@@ -1,6 +1,7 @@
 
 import { data, useParams } from 'react-router-dom'
-import { getByName, cours } from '../../data/coursData'
+// import { getByName, getCours } from '../../data/coursData'
+import { getByName, getCours } from '../../data/coursData'
 import HeaderCard from '../HeaderCard/HearderCard'
 import ContentPage from '../../components/ContentPage/ContentPage'
 import { useState } from 'react'
@@ -13,7 +14,7 @@ const DetailsNote = () => {
     const real_name = name.split('-')[1]
     const [reduceSous, setReduce] = useState(false)
     const content = obj.PageContent
-    const indexObj = cours.indexOf(obj)
+    const indexObj = getCours.indexOf(obj)
     
 
     return (

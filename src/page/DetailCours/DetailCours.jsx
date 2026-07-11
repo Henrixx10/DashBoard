@@ -13,8 +13,20 @@ const DetailCours = () => {
 
     const {name} = useParams()
     const [reduce, setReduce] = useState(false)
-    const data = getByName(name)
+    const [data, setData] =  useState(null)
     const [author, setAuthor] = useState("")
+
+    useEffect(() => {
+
+        async function LoadCours() {
+
+            const data = await getByName(name);
+
+            setData(data);
+        }
+
+        LoadCours();
+    }, []);
 
     const nameCours = data.coursName.split('-')[0]
     const nameDirect = data.coursName.split('-')[1]

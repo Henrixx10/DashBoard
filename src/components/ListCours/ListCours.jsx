@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { cours, getByName } from '../../data/coursData'
 import './ListCours.css'
 
 const ListCours = ({obj}) => {

@@ -1,9 +1,18 @@
 
-const data = await fetch("https://the-dashboard-o5h8.onrender.com/");
-const AllData = await data.json();
 
-export const cours = AllData.synths;
+// https://the-dashboard-o5h8.onrender.com/
 
-export function getByName (name){
+export async function getCours(){
+    const data = await fetch("https://the-dashboard-o5h8.onrender.com/");
+    const AllData = await data.json();
+
+    return AllData.synths;
+}
+
+ 
+
+export async function getByName (name){
+    const cours = await getCours();
     return cours.find((nameRef)=> nameRef.coursName===name);
 }
+

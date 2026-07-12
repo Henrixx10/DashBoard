@@ -59,3 +59,19 @@
 .titleReload{
     margin: 20px;
 }
+
+.LoadingImg{
+    margin: 30px;
+    max-width: 200px;
+    width: 90%;
+    animation: reload 2s ease-in-out infinite;
+}
+
+@keyframes reload {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

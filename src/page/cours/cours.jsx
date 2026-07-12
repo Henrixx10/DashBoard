@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import ListCours from '../../components/ListCours/ListCours'
 import CardCreate from '../../components/CardCreate/CardCreate'
+import chargementImg from '../../assets/reload.png'
 import './cours.css'
 
 function Cours(){
@@ -12,6 +13,7 @@ function Cours(){
     const [cours, setCours] = useState([])
     const [author, setAuthor] = useState("")
     const [loading, setLoading] = useState(true)
+    const [showLoading, setShowLoading] = useState(false)
 
     function fetchTimeout(url, time = 30000) {
         return Promise.race([
@@ -25,10 +27,9 @@ function Cours(){
 
     useEffect(() => {
         
-        console.log("Début des fetch");
+        const timer = setTimeout(()=>{setShowLoading(true)}, 300)
 
         Promise.all([
-            // https://the-dashboard-o5h8.onrender.com/
             fetchTimeout("https://the-dashboard-o5h8.onrender.com/").then(res => {
                 if (!res.ok) throw new Error("Erreur serveur")
                 return res.json()
@@ -47,8 +48,10 @@ function Cours(){
         })
         .finally(() => {
             console.log("Finnaly");
+            clearTimeout(timer);
             setLoading(false);
         });
+        return () => clearTimeout(timer);
     }, []);
 
     const myCours = cours.filter(
@@ -59,13 +62,11 @@ function Cours(){
 
         token ?
 
-            loading ?
-
+            loading && showLoading?
+            
             <div className="reloadSite">
                 <h2 className="titleReload">Le serveur est en cours de chargement ...</h2>
-                {/* <button className="reloadBtn" onClick={()=>window.location.reload()}>
-                    Actualiser
-                </button> */}
+                <img src={chargementImg} alt="chargement" className={`LoadingImg`} />
             </div>
 
             : 

@@ -12,6 +12,8 @@ import './DetailCours.css'
 const DetailCours = () => {
 
     const {name} = useParams()
+    const [show, setShow] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [reduce, setReduce] = useState(false)
     const [data, setData] =  useState(null)
     const [author, setAuthor] = useState("")
@@ -28,11 +30,11 @@ const DetailCours = () => {
         
     }
 
-
     useEffect(() => {
 
-        async function LoadCours() {
+        const timer = setTimeout(()=>{setShow(true)}, 400)
 
+        async function LoadCours() {
             const logaTest = await getName(name);
             console.log(logaTest.coursName.split('-')[0]);
             setData(logaTest)
@@ -41,14 +43,16 @@ const DetailCours = () => {
                 nameDirect: logaTest.coursName.split('-')[1]
 
             })
+            setLoading(false)
+            clearTimeout(timer)
         }
-
         LoadCours();
-    }, []);
+        return()=>clearTimeout(timer)
+    }, [name]);
 
     const naviguate = useNavigate()
 
-    if (data===null){
+    if (!data ){
         return<h2>En cours de chargement</h2>
     }
 

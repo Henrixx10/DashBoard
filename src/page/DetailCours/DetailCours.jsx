@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react'
-import { getByName } from '../../data/coursData'
+import { getCours } from '../../data/coursData'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import ListDef from '../../components/listDef/listDef'
@@ -15,24 +15,42 @@ const DetailCours = () => {
     const [reduce, setReduce] = useState(false)
     const [data, setData] =  useState(null)
     const [author, setAuthor] = useState("")
+    const [nameCrs, setNameCrs] = useState({
+        nameCours: null,
+        nameDirect: null,
+    })
+
+    async function getName(name) {
+    
+        const cours = await getCours();
+
+        return cours.find((nameRef)=>nameRef.coursName===name)
+        
+    }
+
 
     useEffect(() => {
 
         async function LoadCours() {
 
-            const data = await getByName(name);
+            const logaTest = await getName(name);
+            console.log(logaTest.coursName.split('-')[0]);
+            setData(logaTest)
+            setNameCrs({
+                nameCours: logaTest.coursName.split('-')[0],
+                nameDirect: logaTest.coursName.split('-')[1]
 
-            setData(data);
+            })
         }
 
         LoadCours();
     }, []);
 
-    const nameCours = data.coursName.split('-')[0]
-    const nameDirect = data.coursName.split('-')[1]
-
-
     const naviguate = useNavigate()
+
+    if (data===null){
+        return<h2>En cours de chargement</h2>
+    }
 
     return(
 
@@ -42,7 +60,7 @@ const DetailCours = () => {
 
             <div className="title-box">
                 <div className="content-title">
-                    <h1 className="title">{nameCours}</h1>
+                    <h1 className="title">{nameCrs.nameCours}</h1>
                     <img className="img-box" src={data.coursImg} />
                 </div>
             </div>
@@ -54,7 +72,7 @@ const DetailCours = () => {
 
                         <div className="space">
 
-                            {
+                            {                                
 
                                 reduce ? (
                                 <>
@@ -71,7 +89,7 @@ const DetailCours = () => {
                                             method: "PUT",
                                             headers: { "Content-Type": "application/json" },
                                             body: JSON.stringify({
-                                                coursAuthor: nameDirect,
+                                                coursAuthor: nameCrs.nameDirect,
                                                 coursName: data.coursName,
                                                 coursImg: data.coursImg,
                                                 coursDef: list,
@@ -97,7 +115,7 @@ const DetailCours = () => {
                                             method: "PUT",
                                             headers: { "Content-Type": "application/json" },
                                             body: JSON.stringify({
-                                                coursAuthor: nameDirect,
+                                                coursAuthor: nameCrs.nameDirect,
                                                 coursName: data.coursName,
                                                 coursImg: data.coursImg,
                                                 coursDef: data.coursDef,
@@ -143,6 +161,7 @@ const DetailCours = () => {
                     }
                 </div>
             </div>
+
         
 
         </>

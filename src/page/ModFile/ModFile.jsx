@@ -2,7 +2,6 @@
 import './ModFile.css'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getByName } from '../../data/coursData'
 
 
 const ModFile = () => {

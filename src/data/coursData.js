@@ -11,8 +11,10 @@ export async function getCours(){
 
  
 
-export async function getByName (name){
+export async function getName(name) {
+    
     const cours = await getCours();
-    return cours.find((nameRef)=> nameRef.coursName===name);
-}
 
+    return cours.find((nameRef)=>nameRef.coursName===name)
+        
+}

@@ -1,14 +1,53 @@
 
 import { useParams } from 'react-router-dom'
-import { getByName } from '../../data/coursData'
 import QuestionCard from '../../components/QuestionCard/QuestionCard'
 import HeaderCard from '../HeaderCard/HearderCard'
+import { useState, useEffect } from 'react'
+import {getCours} from '../../data/coursData'
 import './Question.css'
 
 const Question = () => {
 
     const {name} = useParams()
-    const data = getByName(name)
+    const [data, setData] = useState(null)
+
+    async function getName(name) {
+    
+        const cours = await getCours();
+
+        return cours.find((nameRef)=>nameRef.coursName===name)
+        
+    }
+    useEffect(() => {
+
+        async function LoadCours() {
+
+            const logaTest = await getName(name);
+            console.log(logaTest);
+            
+            setData(logaTest)
+        }
+
+        LoadCours();
+    }, []);
+
+    useEffect(() => {
+        fetch(`https://the-dashboard-o5h8.onrender.com/user/${localStorage.getItem('userId')}`)
+            .then(res => res.json())
+            .then(data => {
+                setAuthor(data.oneUser.email)
+            })
+            .catch(err => console.error(err))
+    }, [])
+
+    if (data===null){
+        return(
+        <>
+            <HeaderCard urlname={name} />
+            <h2>Le serveur est en cours de chargement</h2>
+        </>
+    )
+    }
 
     return(
 

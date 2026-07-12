@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react'
-import { getByName } from '../../data/coursData'
+import { getCours } from '../../data/coursData'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import ListDefMod from '../../components/listDefMod/listDefMod'
@@ -11,10 +11,34 @@ import './ModifyCours.css'
 const ModifyCours = () => {
 
     const {name} = useParams()
-    const data = getByName(name)
+    const [data, setData] = useState(null)
+    const [nameCrs, setNameCrs] = useState(null)
+    const [defs, setDefs] = useState([])
+    const [falshs, listChange] = useState([])
     const [author, setAuthor] = useState("")
+    const naviguate = useNavigate()
 
-    const nameCours = data.coursName.split('-')[0]
+    async function getName(name) {
+    
+        const cours = await getCours();
+
+        return cours.find((nameRef)=>nameRef.coursName===name)
+        
+    }
+    useEffect(() => {
+
+        async function LoadCours() {
+
+            const logaTest = await getName(name);
+            setData(logaTest)
+            setNameCrs(logaTest.coursName.split('-')[0])
+            
+            listChange(logaTest.coursFlash)
+            setDefs(logaTest.coursDef)
+        }
+
+        LoadCours();
+    }, []);
 
     useEffect(() => {
         fetch(`https://the-dashboard-o5h8.onrender.com/user/${localStorage.getItem('userId')}`)
@@ -24,12 +48,11 @@ const ModifyCours = () => {
             })
             .catch(err => console.error(err))
     }, [])
+    
 
-    const [defs, setDefs] = useState(data.coursDef)
-    const [falshs, listChange] = useState(data.coursFlash)
-
-
-    const naviguate = useNavigate()
+    if (!data) {
+        return <h2>Chargement...</h2>;
+    }
 
     return(
 
@@ -39,7 +62,7 @@ const ModifyCours = () => {
 
             <div className="title-box">
                 <div className="content-title">
-                    <h1 className="title">Modifier votre cours de {nameCours}</h1>
+                    <h1 className="title">Modifier votre cours de {nameCrs.nameCours}</h1>
                     <img className="img-box" src={data.coursImg} />
                 </div>
             </div>
@@ -49,6 +72,8 @@ const ModifyCours = () => {
                     {
 
                         defs.map((definition, index)=>(
+
+                            
                             <ul key={index} className="listDefs">
                                 <ListDefMod def={definition} obj={data} index={index} onChange={(newValue)=>{
                                     const copy = [...defs]
@@ -66,7 +91,7 @@ const ModifyCours = () => {
                     {
                         falshs.map((flash, index)=>(
                             <span key={index} className="Cards">
-                                <CardMod className='card' quest={flash.quest} rep={flash.rep}  obj={data} index={index} listChange={(field, value)=>{
+                                <CardMod className='card' quest={flash.quest} rep={flash.rep} obj={data} index={index} listChange={(field, value)=>{
                                     const copy = [...falshs]
 
                                     copy[index] = {

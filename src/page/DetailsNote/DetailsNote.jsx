@@ -1,20 +1,52 @@
 
-import { data, useParams } from 'react-router-dom'
-// import { getByName, getCours } from '../../data/coursData'
-import { getByName, getCours } from '../../data/coursData'
+import { useParams } from 'react-router-dom'
+import { getCours } from '../../data/coursData'
 import HeaderCard from '../HeaderCard/HearderCard'
 import ContentPage from '../../components/ContentPage/ContentPage'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './DetailsNote.css'
 
 const DetailsNote = () => {
 
     const {name} = useParams()
-    const obj = getByName(name)
     const real_name = name.split('-')[1]
     const [reduceSous, setReduce] = useState(false)
-    const content = obj.PageContent
-    const indexObj = getCours.indexOf(obj)
+    const [content, setContent] = useState(null)
+    const [obj, setObj] = useState(null) 
+    const [author, setAuthor] = useState("")
+
+    async function getName(name) {
+    
+        const cours = await getCours();
+
+        return cours.find((nameRef)=>nameRef.coursName===name)
+        
+    }
+    useEffect(() => {
+
+        async function LoadCours() {
+
+            const logaTest = await getName(name);
+            console.log(logaTest.coursName.split('-')[0]);
+            setObj(logaTest)
+            setContent(logaTest.PageContent)
+        }
+
+        LoadCours();
+    }, []);
+
+    useEffect(() => {
+        fetch(`https://the-dashboard-o5h8.onrender.com/user/${localStorage.getItem('userId')}`)
+            .then(res => res.json())
+            .then(data => {
+                setAuthor(data.oneUser.email)
+            })
+            .catch(err => console.error(err))
+    }, [])
+
+    if (obj===null){
+        return (<h2>Le serveur est en cours de chargement</h2>)
+    }
     
 
     return (

@@ -1,19 +1,51 @@
 
 import './Redimension.css'
-import { useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { getByName } from '../../data/coursData'
+import { useState, useEffect } from 'react'
+import { data, useNavigate, useParams } from 'react-router-dom'
+import { getCours } from '../../data/coursData'
 import ImageSpan from '../../components/imageSpan/imageSpan'
 
 const Redimension = () => {
     
     const {name, indexPage, indexPara} = useParams()
-    const obj = getByName(name)
-    const [dimension, setDimension] = useState(obj.PageContent[indexPage].Paragraph[indexPara].dimension)
-    console.log(dimension);
+    const [obj, setObj] = useState(null)
+    const [dimension, setDimension] = useState(null)
     const naviguate = useNavigate()
 
+    async function getName(name) {
+    
+        const cours = await getCours();
+
+        return cours.find((nameRef)=>nameRef.coursName===name)
+
+    }
+    useEffect(() => {
+
+        async function LoadCours() {
+
+            const logaTest = await getName(name);
+            setObj(logaTest)
+            setDimension(logaTest.PageContent[indexPage].Paragraph[indexPara].dimension)
+        }
+
+        LoadCours();
+    }, []);
+
+    useEffect(() => {
+        fetch(`https://the-dashboard-o5h8.onrender.com/user/${localStorage.getItem('userId')}`)
+            .then(res => res.json())
+            .then(data => {
+                setAuthor(data.oneUser.email)
+            })
+            .catch(err => console.error(err))
+    }, [])
+    
+    if(obj===null){
+        return <h2>Le serveur est en cours de chargement</h2>
+    }
+
     return(
+
         <>
         
             <div className="title-box-quest">

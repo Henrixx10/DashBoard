@@ -32,7 +32,7 @@ const DetailCours = () => {
 
     useEffect(() => {
 
-        const timer = setTimeout(()=>{setShow(true)}, 400)
+        const timer = setTimeout(()=>{setShow(true)}, 200)
 
         async function LoadCours() {
             const logaTest = await getName(name);
@@ -52,8 +52,14 @@ const DetailCours = () => {
 
     const naviguate = useNavigate()
 
-    if (!data ){
-        return<h2>En cours de chargement</h2>
+    if (loading ){
+        if (!show){
+            return (<HeaderCard urlname={name} />)
+        }
+        return (<>
+            <HeaderCard urlname={name} />
+            <h2>En cours de chargement</h2>
+        </>)
     }
 
     return(

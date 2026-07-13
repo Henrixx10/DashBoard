@@ -1,5 +1,17 @@
 
 .title-box{
+    animation: pageTrans 0.5s ease;
+}
+
+.definition{
+    animation: pageTrans 0.5s ease;
+}
+
+.button-box{
+    animation: pageTrans 0.5s ease;
+}
+
+.title-box{
     display: flex;
     justify-content: center;
     align-items: center;

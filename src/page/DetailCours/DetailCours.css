@@ -1,4 +1,16 @@
 
+.definition{
+    animation: pageTrans 0.5s ease;
+}
+
+.title-box{
+    animation: pageTrans 0.5s ease;
+}
+
+.flash{
+    animation: pageTrans 0.5s ease;
+}
+
 .title-box{
     display: flex;
     justify-content: center;
@@ -156,4 +168,17 @@
     border: none;
     color: white;
     border-radius: 8px;
+}
+
+@keyframes pageTrans {
+
+    from{
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    to {
+        opacity: 1;
+    }
+
 }

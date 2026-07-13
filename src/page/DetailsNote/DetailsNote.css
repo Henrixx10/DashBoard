@@ -1,5 +1,14 @@
 
 .Title-div-note{
+    animation: pageTrans 0.5s ease;
+}
+
+.cours-page{
+    animation: pageTrans 0.5s ease;
+}
+
+
+.Title-div-note{
     display: flex;
     justify-content: center;
     align-items: center;

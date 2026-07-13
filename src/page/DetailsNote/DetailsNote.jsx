@@ -10,6 +10,8 @@ const DetailsNote = () => {
 
     const {name} = useParams()
     const real_name = name.split('-')[1]
+    const [show, setShow] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [reduceSous, setReduce] = useState(false)
     const [content, setContent] = useState(null)
     const [obj, setObj] = useState(null) 
@@ -24,16 +26,21 @@ const DetailsNote = () => {
     }
     useEffect(() => {
 
+        const timer = setTimeout(()=>setShow(true), 300)
+
         async function LoadCours() {
 
             const logaTest = await getName(name);
             console.log(logaTest.coursName.split('-')[0]);
             setObj(logaTest)
             setContent(logaTest.PageContent)
+            setLoading(false)
+            clearTimeout(timer)
         }
 
         LoadCours();
-    }, []);
+        return()=>clearTimeout(timer)
+    }, [name]);
 
     useEffect(() => {
         fetch(`https://the-dashboard-o5h8.onrender.com/user/${localStorage.getItem('userId')}`)
@@ -44,8 +51,16 @@ const DetailsNote = () => {
             .catch(err => console.error(err))
     }, [])
 
-    if (obj===null){
-        return (<h2>Le serveur est en cours de chargement</h2>)
+
+
+    if (loading ){
+        if (!show){
+            return (<HeaderCard urlname={name} />)
+        }
+        return (<>
+            <HeaderCard urlname={name} />
+            <h2>En cours de chargement</h2>
+        </>)
     }
     
 

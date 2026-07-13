@@ -12,6 +12,8 @@ const ModifyCours = () => {
 
     const {name} = useParams()
     const [data, setData] = useState(null)
+    const [show, setShow] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [nameCrs, setNameCrs] = useState(null)
     const [defs, setDefs] = useState([])
     const [falshs, listChange] = useState([])
@@ -27,6 +29,8 @@ const ModifyCours = () => {
     }
     useEffect(() => {
 
+        const timer = setTimeout(()=>setShow(true), 200)
+
         async function LoadCours() {
 
             const logaTest = await getName(name);
@@ -35,10 +39,13 @@ const ModifyCours = () => {
             
             listChange(logaTest.coursFlash)
             setDefs(logaTest.coursDef)
+            setLoading(false)
+            clearTimeout(timer)
         }
 
         LoadCours();
-    }, []);
+        return()=>clearTimeout(timer)
+    }, [name]);
 
     useEffect(() => {
         fetch(`https://the-dashboard-o5h8.onrender.com/user/${localStorage.getItem('userId')}`)
@@ -50,8 +57,14 @@ const ModifyCours = () => {
     }, [])
     
 
-    if (!data) {
-        return <h2>Chargement...</h2>;
+    if (loading ){
+        if (!show){
+            return (<HeaderCard urlname={name} />)
+        }
+        return (<>
+            <HeaderCard urlname={name} />
+            <h2>En cours de chargement</h2>
+        </>)
     }
 
     return(

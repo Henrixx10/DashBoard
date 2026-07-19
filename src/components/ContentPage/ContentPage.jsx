@@ -109,7 +109,7 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
                 content.Paragraph.map((descriptObj, indexs)=>(
                   <>
 
-                        <div className='para' key={`${indexs}-para`} onDoubleClick={(e)=>{
+                        <div className='para' onDoubleClick={(e)=>{
                                     e.preventDefault()
                                     setMenu({visible:true, x: e.clientX, y: e.clientY, indexPara: indexs})
                                 }} onContextMenu={(e)=>{
@@ -120,6 +120,28 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
 
                         }}>{descriptObj.txt}</div>
 
+
+
+                        {
+                            descriptObj.img &&
+                            <div className='imagediv'>
+                                <img style={{
+                                    margin: '20px',
+                                    width: `${obj.PageContent[index].Paragraph[indexs].dimension}%`
+                                    
+                                }} alt='image du paragraphe' src={descriptObj.img} onDoubleClick={(e)=>{
+                                    e.preventDefault()
+                                    setMenu2({visible:true, x: e.clientX, y: e.clientY, indexPara: indexs})
+                                }} onContextMenu={(e)=>{
+                                    e.preventDefault()
+                                    setMenu2({visible:true, x: e.clientX, y: e.clientY, indexPara: indexs})
+                                }} />
+                            </div>
+                        }
+
+                  </>
+                ))
+            }
                         {menu.visible&& <div style={{
                                                     display: 'flex',
                                                     position: 'fixed',
@@ -169,22 +191,6 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
 
                         </div>}
 
-                        {
-                            descriptObj.img &&
-                            <div className='imagediv'>
-                                <img style={{
-                                    margin: '20px',
-                                    width: `${obj.PageContent[index].Paragraph[indexs].dimension}%`
-                                    
-                                }} alt='image du paragraphe' src={descriptObj.img} onDoubleClick={(e)=>{
-                                    e.preventDefault()
-                                    setMenu2({visible:true, x: e.clientX, y: e.clientY, indexPara: indexs})
-                                }} onContextMenu={(e)=>{
-                                    e.preventDefault()
-                                    setMenu2({visible:true, x: e.clientX, y: e.clientY, indexPara: indexs})
-                                }} />
-                            </div>
-                        }
                         {menu2.visible&& <div style={{
                                                     display: 'flex',
                                                     position: 'fixed',
@@ -309,10 +315,6 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
                                 
 
                         </div>}
-                  </>
-                ))
-            }
-
         </>
     )
 

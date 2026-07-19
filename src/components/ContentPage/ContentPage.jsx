@@ -28,6 +28,11 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
         y: 0,
     })
 
+    const [dimensionMenu, setDimensionMenu] = useState({
+        wdt: null,
+        height: null
+    })
+
     const [textArea, setTextArea] = useState(null)
 
     
@@ -54,8 +59,9 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
 
                                     <button className="AddFlash" onClick={()=>{
 
-                                        let width = (window.innerWidth / 2) - 317
-                                        let height = (window.innerHeight / 2) - 86
+                                        let width = (window.innerWidth-317) / 2
+                                        let height = (window.innerHeight-86) / 2
+                                        console.log(window.innerWidth + " " + window.innerHeight)
 
                                         setMenu3({visible:true, x: width, y: height})
 

@@ -1,5 +1,5 @@
 
-import { useLayoutEffect, useState, useEffect } from 'react'
+import { useLayoutEffect, useState, useEffect, use } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ImageSpan from '../imageSpan/imageSpan'
 import './ContentPage.css'
@@ -26,8 +26,10 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
         visible: false,
         x: 0,
         y: 0,
-        indexPara: null
     })
+
+    const [textArea, setTextArea] = useState(null)
+
     
     window.addEventListener('click', ()=>{
         setMenu({visible: false})
@@ -52,45 +54,10 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
 
                                     <button className="AddFlash" onClick={()=>{
 
-                                        const paragraphBox = prompt("Ajouter votre paragraphe")
+                                        let width = (window.innerWidth / 2) - (window.innerWidth / 14)
+                                        let height = (window.innerHeight / 2) - (window.innerHeight / 14)
 
-                                        // const copyPara = obj.PageContent[index].Paragraph
-
-                                        // copyPara.push({
-                                        //     txt: paragraphBox
-                                        // })
-
-                                        // const pageContentSend = {
-                                        //     ...obj.PageContent[index],
-                                        //     Paragraph: copyPara
-                                        // }
-                                        const pageContentSend = [...obj.PageContent];
-
-                                        pageContentSend[index] = {
-                                            ...pageContentSend[index],
-                                            Paragraph: [
-                                                ...pageContentSend[index].Paragraph,
-                                                {
-                                                    txt: paragraphBox
-                                                }
-                                            ]
-                                        }
-                                        
-                                        console.log(pageContentSend)
-
-                                        
-                                    // https://the-dashboard-o5h8.onrender.com/add/${data._id}
-
-
-                                        fetch(`https://the-dashboard-o5h8.onrender.com/add/${obj._id}`, {
-                                            method: "PUT",
-                                            headers: { "Content-Type": "application/json" },
-                                            body: JSON.stringify({
-                                                PageContent: pageContentSend
-                                            })
-                                        })
-
-                                        .then(()=>{window.location.reload()})
+                                        setMenu3({visible:true, x: width, y: height})
 
                                     }}>Ajouter un paragraphe</button> 
 
@@ -102,8 +69,6 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
 
                                         console.log(objContent)
 
-
-                                    // https://the-dashboard-o5h8.onrender.com/add/${data._id}
 
 
                                         fetch(`https://the-dashboard-o5h8.onrender.com/add/${obj._id}`, {
@@ -199,7 +164,7 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
                         </div>}
 
                         {
-                            descriptObj.img ?
+                            descriptObj.img &&
                             <div className='imagediv'>
                                 <img style={{
                                     margin: '20px',
@@ -212,7 +177,7 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
                                     e.preventDefault()
                                     setMenu2({visible:true, x: e.clientX, y: e.clientY, indexPara: indexs})
                                 }} />
-                            </div> : console.log("")
+                            </div>
                         }
                         {menu2.visible&& <div style={{
                                                     display: 'flex',
@@ -288,6 +253,54 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
                                                         Supprimer
                                                     
                                                     </button>
+
+                        </div>}
+
+                        {menu3.visible&& <div style={{
+                                                    display: 'flex',
+                                                    position: 'fixed',
+                                                    justifyContent: 'center',
+                                                    flexDirection: 'column',
+                                                    top: menu3.y,
+                                                    left: menu3.x,
+                                                    backgroundColor: 'white',
+                                                    borderRadius: '10px',
+                                                    border: '1px solid #e8e5e5ff',
+                                                    boxShadow: ' 0 2px 8px rgba(0, 0, 0, 0.2)'
+                                                }}>
+
+                                <textarea className='lists' name="paragraph" id="paragraph" onChange={(e)=>setTextArea(e.target.value)}>
+                                </textarea>
+
+                                <button className='ajouter'
+                                onClick={()=>{
+
+                                        const pageContentSend = [...obj.PageContent];
+
+                                        pageContentSend[index] = {
+                                            ...pageContentSend[index],
+                                            Paragraph: [
+                                                ...pageContentSend[index].Paragraph,
+                                                {
+                                                    txt: textArea
+                                                }
+                                            ]
+                                        }
+                                        
+                                        fetch(`https://the-dashboard-o5h8.onrender.com/add/${obj._id}`, {
+                                            method: "PUT",
+                                            headers: { "Content-Type": "application/json" },
+                                            body: JSON.stringify({
+                                                PageContent: pageContentSend
+                                            })
+                                        })
+
+                                        .then(()=>{window.location.reload()})
+                                }}>
+                                    écrire
+                                </button>
+
+                                
 
                         </div>}
                   </>

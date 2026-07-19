@@ -12,7 +12,10 @@ const ListDefMod = ({def, obj, index, onChange, author}) => {
     return(
         <div className="Defs">
 
-            <input type="text" className="lists" value={def} onChange={(e)=>onChange(e.target.value)}/>
+            {/* <input type="text" className="lists" value={def} onChange={(e)=>onChange(e.target.value)}/> */}
+            <textarea type="text" className="lists" value={def} onChange={(e)=>onChange(e.target.value)}>
+                
+            </textarea>
 
             <button className='delete' onClick={()=>{
 

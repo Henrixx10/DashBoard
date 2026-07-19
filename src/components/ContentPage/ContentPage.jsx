@@ -54,8 +54,8 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
 
                                     <button className="AddFlash" onClick={()=>{
 
-                                        let width = (window.innerWidth / 2) - (window.innerWidth / 14)
-                                        let height = (window.innerHeight / 2) - (window.innerHeight / 14)
+                                        let width = (window.innerWidth / 2)
+                                        let height = (window.innerHeight / 2)
 
                                         setMenu3({visible:true, x: width, y: height})
 

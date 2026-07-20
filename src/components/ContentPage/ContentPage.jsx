@@ -39,6 +39,7 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
     window.addEventListener('click', ()=>{
         setMenu({visible: false})
         setMenu2({visible: false})
+        setMenu3({visible: false})
     })
 
     const [dimension, setDimension] = useState([])

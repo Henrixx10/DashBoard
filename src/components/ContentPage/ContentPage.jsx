@@ -287,7 +287,11 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
                                 <button className='ajouter'
                                 onClick={()=>{
 
-                                        const pageContentSend = [...obj.PageContent];
+                                    if(textArea = ""){
+                                        alert("Veuiller renseigner les champs")
+                                    }
+
+                                        const pageContentSend = [...obj.PageContent]
 
                                         pageContentSend[index] = {
                                             ...pageContentSend[index],

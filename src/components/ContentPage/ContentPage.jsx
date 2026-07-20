@@ -287,10 +287,10 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
                                 <button className='ajouter'
                                 onClick={()=>{
 
-                                    if(textArea = ""){
-                                        alert("Veuiller renseigner les champs")
+                                    if(textArea===null){
+                                        alert("Veuiller renseigner tout les champs")
                                     }
-
+                                    else{
                                         const pageContentSend = [...obj.PageContent]
 
                                         pageContentSend[index] = {
@@ -312,6 +312,7 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
                                         })
 
                                         .then(()=>{window.location.reload()})
+                                    }
                                 }}>
                                     écrire
                                 </button>

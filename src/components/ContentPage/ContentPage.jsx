@@ -35,15 +35,16 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
 
     const [textArea, setTextArea] = useState(null)
 
-    
-    window.addEventListener('click', ()=>{
-        setMenu({visible: false})
-        setMenu2({visible: false})
-    })
-
     const [dimension, setDimension] = useState([])
 
     const [reducePara, setReduce] = useState(false)
+
+    if (menu.visible || menu2.visible || menu3.visible){
+        window.addEventListener('click', ()=>{
+            setMenu({visible: false})
+            setMenu2({visible: false})
+        })
+    }
 
     return(
 

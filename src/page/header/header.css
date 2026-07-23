@@ -1,11 +1,12 @@
 
 .header{
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1.5px solid #dcdcdc;
 }
-
+f
 .header-title{
     font-family: "Stack Sans Notch", sans-serif;
     font-optical-sizing: auto;

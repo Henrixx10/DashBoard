@@ -14,6 +14,10 @@ function Cours(){
     const [author, setAuthor] = useState("")
     const [loading, setLoading] = useState(true)
     const [showLoading, setShowLoading] = useState(false)
+    const [dimensionPage, setDimensionPage] = useState({
+        wdt: window.innerWidth,
+        hgt: window.innerWidth
+    })
 
     function fetchTimeout(url, time = 30000) {
         return Promise.race([
@@ -54,6 +58,7 @@ function Cours(){
         return () => clearTimeout(timer);
     }, []);
 
+
     const myCours = cours.filter(
         obj => obj.coursAuthor === author
     )
@@ -69,12 +74,14 @@ function Cours(){
                 <img src={chargementImg} alt="chargement" className={`LoadingImg`} />
             </div>
 
-            : 
+            :
+
+            dimensionPage.wdt > 400 ?
 
             <div className="Cours">
                 <div className="title-cours">
                     <section className='title-cours-section'>
-                        <h2 className="Cours-title">Vos cours :</h2>  
+                        <h2 className="Cours-title">Vos cours :</h2>
                     </section>
                 </div>
 
@@ -92,6 +99,10 @@ function Cours(){
 
                 </ul>
             </div>
+
+            : 
+            
+            console.log("Plus petit que 900px")
             
 
         : 

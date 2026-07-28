@@ -91,7 +91,7 @@ const Question = () => {
                         ]
                         
 
-                        fetch(`http://localhost:3000/add/${data._id}`, {
+                        fetch(`https://the-dashboard-o5h8.onrender.com/add/${data._id}`, {
                             method: "PUT",
                             headers: { "Content-Type": "application/json" },
                             body: JSON.stringify({

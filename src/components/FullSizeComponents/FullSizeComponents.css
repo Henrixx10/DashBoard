@@ -1,0 +1,72 @@
+.card-boxs{
+    height: 300px;
+    width: 600px;
+    margin: 20px;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #646cff;
+    border-radius: 15px;
+    border: none;
+    color: white;
+}
+
+.imagebox-title{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1.5px solid white;
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+}
+
+.img-courss{
+    width: 60px;
+    height: 46px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+
+.Names{
+    font-family: "Elms Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 1.4em;
+}
+
+.spawn_to_do{
+    width: 550px;
+    height:  150px;
+    /* border: 1px dashed white; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+}
+
+.acces{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.links{
+    color: white;
+    text-decoration: none;
+    
+}
+
+.acces-p{
+  font-family: "Karla", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: 1.4em;
+}

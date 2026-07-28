@@ -16,7 +16,7 @@ const HeaderCard = ({urlname}) => {
 
 
             <NavLink to={`/cours/Question/${urlname}`} className='Link-head'>
-                <a className="link-a">Fiches</a>
+                <a className="link-a">To Do & Fiches</a>
             </NavLink>
 
             <NavLink to={`/cours/modifyCours/${urlname}`} className='Link-head'>

@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react'
 import ListCours from '../../components/ListCours/ListCours'
 import CardCreate from '../../components/CardCreate/CardCreate'
 import chargementImg from '../../assets/reload.png'
+import FullSizeComponents from '../../components/FullSizeComponents/FullSizeComponents'
+import lists from '../../assets/list.png'
+import block from '../../assets/basique.png'
 import './cours.css'
 
 function Cours(){
@@ -14,10 +17,7 @@ function Cours(){
     const [author, setAuthor] = useState("")
     const [loading, setLoading] = useState(true)
     const [showLoading, setShowLoading] = useState(false)
-    const [dimensionPage, setDimensionPage] = useState({
-        wdt: window.innerWidth,
-        hgt: window.innerWidth
-    })
+    const [dimensionPage, setDimensionPage] = useState(null)
 
     function fetchTimeout(url, time = 30000) {
         return Promise.race([
@@ -58,6 +58,10 @@ function Cours(){
         return () => clearTimeout(timer);
     }, []);
 
+    useEffect(()=>{
+        setDimensionPage(window.innerWidth)
+    }, [window.innerWidth])
+
 
     const myCours = cours.filter(
         obj => obj.coursAuthor === author
@@ -76,8 +80,8 @@ function Cours(){
 
             :
 
-            dimensionPage.wdt > 400 ?
-
+            dimensionPage < 650 ?
+            
             <div className="Cours">
                 <div className="title-cours">
                     <section className='title-cours-section'>
@@ -100,9 +104,44 @@ function Cours(){
                 </ul>
             </div>
 
+
             : 
-            
-            console.log("Plus petit que 900px")
+            <div className="Cours">
+
+                <div className="aff" style={{
+                    position: 'fixed',
+                    left: window.innerWidth-170,
+                    top: '99px'
+                }}>
+                    {/* <button className='btn_aff' onClick={()=>setList(true)}>
+                        <img src={lists} alt="affichage liste" className='image_set'/>
+                    </button> */}
+                    {/* <button className='btn_aff' onClick={()=>setList(true)}>
+                        <img src={block} alt="affichage block" className='image_set'/>
+                    </button> */}
+                </div>
+
+                <div className="title-cours">
+                    <section className='title-cours-section'>
+                        <h2 className="Cours-title">Vos cours :</h2>
+                    </section>
+                </div>
+
+                <ul className="Cours-ul">
+                    {
+
+                        myCours.map((obj, index)=>(
+
+                            <FullSizeComponents key={index} obj={obj} />
+
+                        ))
+                    }
+
+                    {/* <CardCreate /> */}
+
+                </ul>
+            </div>
+
             
 
         : 
@@ -118,7 +157,9 @@ function Cours(){
 
 
                 <ul className="Cours-ul">
-                    <button className="hub" onClick={()=>navigate('/start')} >Créer un compte ou connecter vous</button>
+                    <Link>
+                        <button className="hub" onClick={()=>navigate('/start')} >Créer un compte ou connecter vous</button>
+                    </Link>
                 </ul>
 
             </div>

@@ -38,3 +38,78 @@
   flex-wrap: wrap;
   margin: 5px;
 }
+
+.ToDo_box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ToDo_section{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+  max-width: 990px;
+}
+
+.spawn_todo{
+  display: flex;
+  margin: 10px;
+  justify-content: space-between;
+}
+
+.btns{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.select_tag{
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid black;
+  background-color: #efefef;
+  font-size: 0.8em;
+}
+
+.to_do_p{
+  font-family: "Karla", sans-serif;
+  font-optical-sizing: auto;
+  /* font-weight: bold; */
+  font-style: 1.4em;
+}
+
+.tag_p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.important{
+  width: 115px;
+  height: 45px;
+  margin: 5px;
+}
+
+.input-toDo{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 990px;
+  margin: 10px;
+}
+
+.input_value_td{
+  padding: 3px;
+  border-radius: 4px;
+  border: 1px solid black;
+  margin: 15px;
+}
+
+.submit_td{
+  margin: 15px;
+  padding: 6px;
+}

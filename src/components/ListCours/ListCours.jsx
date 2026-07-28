@@ -5,7 +5,7 @@ const ListCours = ({obj}) => {
 
     const nameCours = obj.coursName.split('-')[0]
 
-    return( 
+    return(
         <Link to={`/cours/${obj.coursName}`} className='link'>
             <div className="card-box">
                 <h3 className="Name">{nameCours}</h3>

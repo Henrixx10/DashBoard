@@ -11,7 +11,8 @@
     padding: 0px;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
 }
 
 .hub{
@@ -74,4 +75,14 @@
     100%{
         transform: rotate(360deg);
     }
+}
+
+.image_set{
+    width: 65px;
+    height: 50px;
+}
+
+.btn_aff{
+    border: none;
+    background-color: white;
 }

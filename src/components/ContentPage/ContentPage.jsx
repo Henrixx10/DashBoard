@@ -39,13 +39,24 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
 
     const [reducePara, setReduce] = useState(false)
 
-    if (menu.visible || menu2.visible || menu3.visible){
-        window.addEventListener('click', ()=>{
+
+    useEffect(()=>{
+        const close=()=>{
             setMenu({visible: false})
             setMenu2({visible: false})
             setMenu3({visible:false})
-        })
-    }
+        }
+
+        if (menu.visible || menu2.visible || menu3.visible) {
+            window.addEventListener("click", close);
+        }
+
+        return () => {
+            window.removeEventListener("click", close);
+        };
+
+
+    }, [menu.visible, menu2.visible, menu3.visible])
 
     return(
 
@@ -59,8 +70,8 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
                                 <>
                                     <button className='reduce' onClick={()=>setReduce(false)}>-</button>
 
-                                    <button className="AddFlash" onClick={()=>{
-
+                                    <button className="AddFlash" onClick={(e)=>{
+                                        e.stopPropagation();
                                         let width = (window.innerWidth-317) / 2
                                         let height = (window.innerHeight-86) / 2
                                         console.log(window.innerWidth + " " + window.innerHeight)
@@ -283,12 +294,12 @@ const ContentPage = ({content, obj, index, real_name, indexObj, nameObj}) => {
                                                     boxShadow: ' 0 2px 8px rgba(0, 0, 0, 0.2)'
                                                 }}>
 
-                                <textarea className='lists' name="paragraph" id="paragraph" onChange={(e)=>setTextArea(e.target.value)}>
+                                <textarea className='lists' name="paragraph" id="paragraph" onClick={(e)=>{e.stopPropagation();}} onChange={(e)=>setTextArea(e.target.value)}>
                                 </textarea>
 
                                 <button className='ajouter'
-                                onClick={()=>{
-
+                                onClick={(e)=>{
+                                    e.stopPropagation();
                                     if(textArea===null){
                                         alert("Veuiller renseigner tout les champs")
                                     }

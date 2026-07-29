@@ -7,6 +7,9 @@ import {getCours} from '../../data/coursData'
 import important_img from '../../assets/important.png'
 import encours_img from '../../assets/en cours.png'
 import terminer_img from '../../assets/terminer.png'
+import ter from '../../assets/ter.png'
+import imp from '../../assets/imp.png'
+import en_cours from '../../assets/en_cours.png'
 import './Question.css'
 
 const Question = () => {
@@ -113,7 +116,7 @@ const Question = () => {
                                     <section className="tag_p">
                                         <p className='to_do_p'>{ToDo.to_do}</p>
                                         {
-                                            window.innerWidth > 600 ? ToDo.tag==='important' ? <img src={important_img} alt="tag important" className='important' /> : ToDo.tag==='cours' ? <img src={encours_img} alt="tag important" className='important' /> : ToDo.tag==='terminer' ? <img src={terminer_img} alt="tag terminer" className='important' /> : '' : ''
+                                            window.innerWidth > 600 ? ToDo.tag==='important' ? <img src={important_img} alt="tag important" className='important' /> : ToDo.tag==='cours' ? <img src={encours_img} alt="tag important" className='important' /> : ToDo.tag==='terminer' ? <img src={terminer_img} alt="tag terminer" className='important' /> : '' : ToDo.tag==='important' ? <img src={imp} alt="tag important" className='mini' /> : ToDo.tag==='cours' ? <img src={en_cours} alt="tag important" className='mini' /> : ToDo.tag==='terminer' ? <img src={ter} alt="tag terminer" className='mini' /> : ''
                                         }
                                     </section>
                                     

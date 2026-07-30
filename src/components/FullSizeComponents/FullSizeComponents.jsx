@@ -42,6 +42,8 @@ const FullSizeComponents = ({obj}) => {
                             : <p className='todo_spawn'>Veuiller supprimer une tâche !</p>
                         }
                     </div>
+                    
+
                     <Link to={`/cours/${obj.coursName}`} className='links'>
                         <div className="acces">
                             <p className="acces-p">

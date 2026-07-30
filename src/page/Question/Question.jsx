@@ -10,6 +10,8 @@ import terminer_img from '../../assets/terminer.png'
 import ter from '../../assets/ter.png'
 import imp from '../../assets/imp.png'
 import en_cours from '../../assets/en_cours.png'
+import send_img from '../../assets/send.png'
+import trash_img from '../../assets/trash.png'
 import './Question.css'
 
 const Question = () => {
@@ -18,7 +20,6 @@ const Question = () => {
     const [data, setData] = useState(null)
     const [show, setShow] = useState(false)
     const [loading, setLoading] = useState(true)
-    const [class_name, setClass_name] = useState("normal")
     const [to_do, setToDo] = useState(null)
     const [author, setAuthor] = useState(null)
 
@@ -104,7 +105,9 @@ const Question = () => {
 
                         .then(()=>{window.location.reload()})
 
-                    }}>envoyer</button>
+                    }}>
+                        <img src={send_img} alt="send image" className='send_img' />
+                    </button>
                 </section>
 
                 <section className="ToDo_section">
@@ -112,11 +115,18 @@ const Question = () => {
                         data.coursToDo.map((ToDo, index)=>(
 
                             <>
-                                <section className="spawn_todo">
+                                <section className={
+                                    {
+                                        important: 'red_box',
+                                        cours: 'green_box',
+                                        terminer: 'blue_box'
+                                    }[ToDo.tag]
+                                }>
                                     <section className="tag_p">
                                         <p className='to_do_p'>{ToDo.to_do}</p>
                                         {
-                                            window.innerWidth > 600 ? ToDo.tag==='important' ? <img src={important_img} alt="tag important" className='important' /> : ToDo.tag==='cours' ? <img src={encours_img} alt="tag important" className='important' /> : ToDo.tag==='terminer' ? <img src={terminer_img} alt="tag terminer" className='important' /> : '' : ToDo.tag==='important' ? <img src={imp} alt="tag important" className='mini' /> : ToDo.tag==='cours' ? <img src={en_cours} alt="tag important" className='mini' /> : ToDo.tag==='terminer' ? <img src={ter} alt="tag terminer" className='mini' /> : ''
+                                            
+                                            // window.innerWidth > 600 ? ToDo.tag==='important' ? <img src={important_img} alt="tag important" className='important' /> : ToDo.tag==='cours' ? <img src={encours_img} alt="tag important" className='important' /> : ToDo.tag==='terminer' ? <img src={terminer_img} alt="tag terminer" className='important' /> : '' : ToDo.tag==='important' ? <img src={imp} alt="tag important" className='mini' /> : ToDo.tag==='cours' ? <img src={en_cours} alt="tag important" className='mini' /> : ToDo.tag==='terminer' ? <img src={ter} alt="tag terminer" className='mini' /> : ''
                                         }
                                     </section>
                                     
@@ -144,7 +154,7 @@ const Question = () => {
                                             <option value="cours">En cours</option>
                                             <option value="terminer">Terminer</option>
                                         </select>
-                                        <button className='select_tag' onClick={()=>{
+                                        <button className='submit_td' onClick={()=>{
 
                                             const copyToDo = [
                                                 ...data.coursToDo,
@@ -162,7 +172,11 @@ const Question = () => {
                                             })
 
                                             .then(()=>{window.location.reload()})
-                                        }} >❌</button>
+                                        }} >
+
+                                            <img src={trash_img} alt="trash image" className='send_img' />
+
+                                        </button>
                                     </section>
                                 </section>
 
